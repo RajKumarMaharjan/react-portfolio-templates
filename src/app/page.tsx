@@ -1,69 +1,107 @@
-import Image from "next/image";
+import styles from "./page.module.scss";
+
+const skills = [
+  "React",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "HTML",
+  "CSS",
+  "SASS",
+  "Git",
+];
+
+const links = [
+  { label: "GitHub", href: "https://github.com/rajkumarmaharjan" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/rajkumar-maharjan/",
+  },
+  { label: "CodePen", href: "https://codepen.io/rajkumarmaharjan" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className={styles.site}>
+      <nav className={styles.nav} aria-label="Main navigation">
+        <a className={styles.logo} href="#top" aria-label="Rajkumar Maharjan home">
+          RM<span>.</span>
+        </a>
+        <div className={styles.navLinks}>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a className={styles.resumeLink} href="/images/Raj%20Kumar%20Maharjan.pdf" target="_blank" rel="noreferrer">
+          Resume <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+
+      <section className={styles.hero} id="top">
+        <div className={styles.heroCopy}>
+          <p className={styles.kicker}>Frontend developer / Kathmandu, Nepal</p>
+          <h1>Interfaces with<br /><em>intention.</em></h1>
+          <p className={styles.intro}>
+            I&apos;m Rajkumar Maharjan. I build clear, responsive web experiences
+            with thoughtful details and a strong frontend foundation.
           </p>
+          <div className={styles.actions}>
+            <a className={styles.primaryAction} href="#contact">Let&apos;s talk <span aria-hidden="true">↗</span></a>
+            <a className={styles.textAction} href="/images/Raj%20Kumar%20Maharjan.pdf" target="_blank" rel="noreferrer">View resume</a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className={styles.heroMark} aria-hidden="true">
+          <div className={styles.markRing}><span>RM</span></div>
+          <p>SELECTED<br />WORK &amp; THINKING</p>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className={styles.about} id="about">
+        <p className={styles.sectionLabel}>01 / About</p>
+        <div className={styles.aboutContent}>
+          <h2>Useful, beautiful,<br /><em>human.</em></h2>
+          <div className={styles.aboutText}>
+            <p>
+              I&apos;m a frontend developer passionate about creating beautiful and
+              functional web applications. My work sits where design thinking,
+              accessible markup, and maintainable code meet.
+            </p>
+            <p>
+              From a first sketch to a polished responsive interface, I care
+              about the small decisions that make a product feel effortless.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.skills} id="skills">
+        <p className={styles.sectionLabel}>02 / Toolkit</p>
+        <div className={styles.skillsGrid}>
+          <h2>Built with<br /><em>curiosity.</em></h2>
+          <div className={styles.skillList}>
+            {skills.map((skill, index) => (
+              <div className={styles.skill} key={skill}>
+                <span>0{index + 1}</span>{skill}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.contact} id="contact">
+        <p className={styles.sectionLabel}>03 / Contact</p>
+        <div className={styles.contactContent}>
+          <h2>Have a good idea?<br /><em>Let&apos;s make it real.</em></h2>
+          <a className={styles.email} href="mailto:rajkumarmaharjan006@gmail.com">rajkumarmaharjan006@gmail.com <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <footer className={styles.footer}>
+        <span>© {new Date().getFullYear()} Rajkumar Maharjan</span>
+        <div className={styles.socials}>
+          {links.map((link) => <a href={link.href} key={link.label} target="_blank" rel="noreferrer">{link.label}</a>)}
+        </div>
+      </footer>
+    </main>
   );
 }
